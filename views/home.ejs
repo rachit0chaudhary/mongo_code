@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>CHATS</h1>
+    <% for(user of chats){%>
+    <div class="chat">
+      <p>from &nbsp;: &nbsp; &nbsp;<i><%= user.from%></i></p>
+      <div class="msg">
+        <p>message &nbsp;:&nbsp;&nbsp;<%= user.msg%></p>
+        <form method="get" action="/chats/<%=user.id%>/update">
+          <button id="update" class="button-49">Update</button>
+        </form>
+        <hr />
+        <form method="post" action="/chats/<%=user.id%>?_method=DELETE">
+          <button id="delete">DELETE</button>
+        </form>
+      </div>
+      <p>Received by &nbsp;:&nbsp;&nbsp;<i><%= user.to%></i></p>
+      <p>
+        <%= user.created_at.toString().split(" ")[4]%> <%=
+        user.created_at.toString().split(" ").slice(0,4).join(" ")%>
+        <!-- here we are converting the output of our date() into usable form by first converting it into a string and then spliting it on the bases of spaces and then adding the first four splits into and arrt and showcasing it  -->
+      </p>
+    </div>
+    <br />
+    <%}%>
+    <form method="get" action="/chats/new">
+      <button class="button-56">CREATE NEW</button>
+    </form>
+  </body>
+</html>

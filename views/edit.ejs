@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>EDIT YOUR CHAT</h1>
+    <H3>fROM: <%=user.from%> -> TO:<%=user.to%> </H3>
+    <form method="post" action="/chats/<%=user.id%>?_method=PATCH">
+      <textarea name="msg" id="" cols="20" rows="5">
+        <%=user.msg%>
+      </textarea>
+      <br />
+      <button>SAVE</button>
+    </form>
+  </body>
+</html>
